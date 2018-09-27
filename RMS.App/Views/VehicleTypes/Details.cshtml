@@ -1,0 +1,18 @@
+﻿@model RMS.App.ViewModels.VehicleTypeViewModel
+
+@{
+    ViewBag.Title = "Vehicle Type Details";
+}
+
+<h2>Vehicle Type Details</h2>
+<hr/>
+<div class="row">
+    <div class="col-md-2-custom">@Html.DisplayNameFor(model => model.Name)</div>
+    <div class="col-md-10">@Html.DisplayFor(model => model.Name)</div>
+
+</div>
+<br/>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id },new {@class="btn btn-warning"}) &nbsp;
+    @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-info"})
+</p>

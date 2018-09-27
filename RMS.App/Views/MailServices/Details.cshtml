@@ -1,0 +1,62 @@
+﻿@model RMS.App.ViewModels.MailServiceViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mail Details</h2>
+<hr />
+<div>
+    
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.To)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.From)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.From)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MailSendingDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailSendingDateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RequisitionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Requisition.RequisitionNumber)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-info"})
+</p>

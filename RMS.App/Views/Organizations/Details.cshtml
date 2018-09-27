@@ -1,0 +1,21 @@
+﻿@model RMS.App.ViewModels.OrganizationViewModel
+
+@{
+    ViewBag.Title = "Organization Details";
+}
+
+<h2>Organization Details</h2>
+<hr/>
+<br/>
+<div class="row">
+    
+    <div class="col-md-2-custom">@Html.DisplayNameFor(model => model.Name)</div>
+    <div class="col-md-10">@Html.DisplayFor(model => model.Name)</div>
+
+
+</div>
+<br/>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id},htmlAttributes:new {@class="btn btn-warning"}) &nbsp;
+    @Html.ActionLink("Back to List", "Index",null, htmlAttributes: new {@class="btn btn-info"})
+</p>

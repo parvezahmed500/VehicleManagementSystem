@@ -1,0 +1,105 @@
+﻿
+<header id="header" id="home">
+    <!-- Start header -->
+    <div class="header-top" >
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4 col-4 header-top-left no-padding">
+                    <p class="float-left">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/bcc_logo.png" width="40" height="40" alt="Home Logo" title="Home BCC"/></a>
+                        &nbsp; <strong style="font-size: 20px;" class="font-weight-bold" id="logotext">Bangladesh Computer Council</strong>
+                    </p>
+                </div>
+                <div class="col-lg-8 col-sm-8 col-8 header-top-right no-padding">
+                    <p class="float-right">
+                        @if (User.IsInRole("User")|| User.IsInRole("Administrator")|| User.IsInRole("Controller"))
+                        {
+                            <a class="btn btn-sm btn-outline-info bg-transparent text-white" href="@Url.Action("Help", "Home")" title="Need user help!" target="_blank"><i class="fa fa-info"></i> Help!</a>
+                        }
+                        
+                        
+
+                        @Html.Partial("_LoginPartial")
+                    </p>
+
+                </div>
+            </div>
+            <div class="row clear">
+                <div class="col-lg-12 col-sm-12 col-12 header-top-right no-padding ">
+                    <p class="text-right no-padding no-margin">
+                        <a class="bg-transparent text-white" href="#" title="Contact"><i class="fa fa-phone"></i> +88 01234 567 890</a>
+                        <a class="bg-transparent text-white" href="mailto:support@bcc.gov.bd" title="Support mail"><i class="fa fa-envelope-o"></i> support@bcc.gov.bd</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+            <nav id="nav-menu-container" class="col-md-10">
+                <ul class="nav-menu">
+                    <li class="menu-active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Setup Queue", "Index", "Queue")</li>
+                    }
+                    @if (User.IsInRole("Controller") || User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Requisition Queue", "RequisitionQueue", "Queue")</li>
+                        <li>@Html.ActionLink("Send Request", "Create", "Requisitions")</li>
+                        <li class="fa-mail-forward float-right">@Html.ActionLink("Message", "GetMessage", "Queue")</li>
+                    }
+                   
+
+                    @if (User.IsInRole("User"))
+                    {
+                        <li>@Html.ActionLink("Send Request", "Create", "Requisitions")</li>
+                    }
+
+                </ul>
+
+            </nav><!-- #nav-menu-container -->
+
+            @if (User.IsInRole("Controller"))
+            {
+                <nav id="" class="col-md-2">
+                    <!--Notification-->
+                    <ul>
+                        <li class="dropdown">
+                            @if (@ViewBag.count > 0)
+                            {
+                                <button title="Unread notifications" class="btn badge-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret badge"><i class="fa fa-bell"></i><span class="text-danger font-weight-bold" style="font-size: 16px;"> &nbsp; &nbsp; @ViewBag.count</span></span></button>
+                            }
+                            else
+                            {
+                                <button title="You have no unread notifications" class="btn badge-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret badge"><i class="fa fa-bell"></i> &nbsp; &nbsp; @ViewBag.count</span></button>
+                            }
+
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Notification != null)
+                                {
+                                    var data = ViewBag.Notification;
+                                    foreach (var dt in data)
+                                    {
+                                        <li><a href="@Url.Action("Create", "AssignRequisitions", new {requisitionId = dt.RequisitionId})" style="margin: 0 5px;"> @dt.Employee.FullName &nbsp; @dt.Text &nbsp; Req No: @dt.Requisition.RequisitionNumber &nbsp; @dt.NotifyDateTime.ToString("hh:mm tt")</a></li>
+                                        <hr/>
+                                    }
+                                    <li class="text-center">New Requiest</li>
+                                }
+
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+            }
+        </div>
+    </div>
+
+    
+
+</header><!-- End header -->

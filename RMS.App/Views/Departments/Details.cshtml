@@ -1,0 +1,26 @@
+﻿@model RMS.App.ViewModels.DepartmentViewModel
+
+@{
+    ViewBag.Title = "Department Details";
+}
+
+<h2>Department Details</h2>
+<hr />
+<div class="row">
+    
+    <div class="col-md-2-custom">@Html.DisplayNameFor(model => model.OrganizationId)</div>
+    <div class="col-md-10">@Html.DisplayFor(model => model.Organization.Name)</div>
+
+    <div class="col-md-2-custom">@Html.DisplayNameFor(model => model.Name)</div>
+    <div class="col-md-10">@Html.DisplayFor(model => model.Name)</div>
+
+    <div class="col-md-2-custom">@Html.DisplayNameFor(model => model.Code)</div>
+    <div class="col-md-10">@Html.DisplayFor(model => model.Code)</div>
+
+
+</div>
+<br/>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id },new {@class="btn btn-warning"}) &nbsp;
+    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-info"})
+</p>

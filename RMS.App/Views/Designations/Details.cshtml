@@ -1,0 +1,18 @@
+﻿@model RMS.App.ViewModels.DesignationViewModel
+
+@{
+    ViewBag.Title = "Designation Details";
+}
+
+<h2>Designation Details</h2>
+<hr/>
+<div class="row">
+    <div class="col-md-2-custom">@Html.DisplayNameFor(model => model.Title)</div>
+    <div class="col-md-10">@Html.DisplayFor(model => model.Title)</div>
+
+</div>
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id },new {@class="btn btn-warning"}) &nbsp;
+    @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-info" })
+</p>

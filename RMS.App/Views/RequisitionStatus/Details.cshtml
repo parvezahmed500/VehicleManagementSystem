@@ -1,0 +1,25 @@
+﻿@model  RMS.App.ViewModels.RequisitionStatusViewModel
+
+@{
+    ViewBag.Title = "Requisition Status Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Requisition Status Details</h2>
+<hr/>
+
+<div class="row">
+
+    <div class="col-md-2">@Html.DisplayNameFor(model => model.RequisitionId)</div>
+    <div class="col-md=5">@Html.DisplayFor(model => model.RequisitionId)</div>
+</div>
+<div class="row">
+    <div class="col-md-2">@Html.DisplayNameFor(model => model.StatusType)</div>
+    <div class="col-md=5">@Html.DisplayFor(model => model.StatusType)</div>
+
+</div>
+<br/>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id },new {@class="btn btn-warning"}) &nbsp;
+    @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-info"})
+</p>
